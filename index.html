@@ -3,12 +3,83 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>PixelHelm | Automated Conversion & Pixel QA for Agencies</title>
+
+    <!-- Primary SEO Metadata -->
+    <title>PixelHelm | Automated Pixel & Conversion QA for Marketing Agencies</title>
+    <meta name="description" content="Stop bad code from hijacking profitable campaigns. PixelHelm runs continuous, human-like automated checkout simulations to catch broken pixels and detached GTM triggers before ad algorithms waste budget."/>
+    <meta name="keywords" content="conversion tracking QA, meta pixel monitor, google tag manager monitoring, synthetic checkout testing, ad attribution monitor, CAPI validation, agency marketing QA"/>
+    <meta name="author" content="PixelHelm"/>
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="PixelHelm"/>
+    <meta property="og:title" content="PixelHelm | Stop Bad Code Hijacking Profitable Campaigns"/>
+    <meta property="og:description" content="Continuous human-like automated checkout simulations that catch broken tracking before ad spend burns."/>
+    <meta property="og:locale" content="en_US"/>
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="PixelHelm | Automated Conversion & Pixel QA for Agencies"/>
+    <meta name="twitter:description" content="Continuous human-like automated checkout simulations that catch broken tracking before ad spend burns."/>
+
+    <!-- Theme & Mobile Optimizations -->
+    <meta name="theme-color" content="#7c3aed"/>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "PixelHelm",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "description": "Automated synthetic checkout testing and conversion pixel QA platform built for performance marketing agencies.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free Private Beta Access"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What does PixelHelm do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "PixelHelm runs continuous, automated, human-like browser checkouts on your client e-commerce funnels. It verifies that purchase signals and pixel events reach Meta and Google, alerting your agency the instant frontend code updates break tracking."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why do ad campaigns fail when code changes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When a developer renames a CSS button class or changes a theme layout, GTM event triggers detach. Orders process normally in the checkout, but ad networks receive zero conversion data. Smart bidding algorithms assume the campaign failed and divert ad spend to non-converting traffic."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will synthetic tests pollute live store metrics or inventory?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. PixelHelm tests use whitelisted $0 QA promo codes or inspect pre-payment network payloads directly from browser runtime without passing live ad click parameters."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
-          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet"/>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -24,7 +95,7 @@
                             pink: '#f43f5e',
                             purple: '#8b5cf6',
                             violet: '#7c3aed',
-                            dark: '#0f172a',
+                            dark: '#070b14',
                         }
                     }
                 }
@@ -34,450 +105,442 @@
 
     <style>
         body {
-            background: radial-gradient(circle at 10% 20%, #fdf2f8 0%, #ede9fe 40%, #f5f3ff 70%, #fce7f3 100%);
+            background: radial-gradient(circle at 10% 15%, #fdf2f8 0%, #ede9fe 35%, #f5f3ff 70%, #fce7f3 100%);
             min-height: 100vh;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         .main-card {
-            box-shadow: 0 30px 60px -15px rgba(124, 58, 237, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.9);
+            box-shadow: 0 35px 70px -15px rgba(124, 58, 237, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.95);
         }
 
-        .store-window {
-            box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.9);
+        .terminal-glow {
+            box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.8), 0 0 40px -10px rgba(124, 58, 237, 0.35);
+        }
+
+        /* Smooth, realistic cursor movement */
+        #virtual-cursor {
+            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+            pointer-events: none;
+            will-change: transform;
         }
     </style>
 </head>
-<body class="flex items-center justify-center p-3 sm:p-6 lg:p-10 text-slate-900 antialiased min-h-screen">
+<body class="flex items-center justify-center p-3 sm:p-6 lg:p-8 text-slate-900 antialiased min-h-screen">
 
 <div class="main-card w-full max-w-5xl rounded-[2.5rem] bg-white/95 p-6 sm:p-10 lg:p-12 backdrop-blur-xl border border-white">
 
-    <!-- Navigation -->
+    <!-- Header & Navigation -->
     <header class="flex items-center justify-between pb-8 border-b border-slate-100">
-        <div class="flex items-center gap-2.5">
-            <span class="text-lg font-extrabold tracking-tight text-slate-900">Pixel<span
-                    class="text-brand-purple">Helm</span></span>
-        </div>
+        <a href="#" class="flex items-center gap-2.5" aria-label="PixelHelm Home">
+            <span class="text-lg font-extrabold tracking-tight text-slate-900">Pixel<span class="text-brand-purple">Helm</span></span>
+        </a>
 
-        <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-600">
-            <a href="#demo" class="hover:text-slate-900 transition">Interactive Demo</a>
+        <nav aria-label="Main Navigation" class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-600">
+            <a href="#demo" class="hover:text-slate-900 transition">Simulation Demo</a>
             <a href="#how" class="hover:text-slate-900 transition">How it works</a>
             <a href="#faq" class="hover:text-slate-900 transition">FAQ</a>
         </nav>
 
         <button onclick="openModal()"
-                class="rounded-full bg-slate-950 px-5 py-2.5 text-xs font-bold text-white hover:bg-slate-800 transition shadow-sm">
+                class="rounded-full bg-slate-950 px-5 py-2.5 text-xs font-bold text-white hover:bg-slate-800 transition shadow-sm"
+                aria-label="Request Beta Access">
             Get Beta Access
         </button>
     </header>
 
-    <!-- Hero Section -->
-    <section class="py-10 sm:py-14 text-center max-w-2xl mx-auto">
-        <div class="inline-block rounded-full bg-pink-50 border border-pink-100 px-4 py-1 text-xs font-bold text-brand-pink mb-5">
-            For marketing agencies running paid media campaigns
-        </div>
+    <main>
+        <!-- Hero Section -->
+        <section class="py-10 sm:py-14 text-center max-w-3xl mx-auto" aria-labelledby="hero-heading">
+            <div class="inline-flex items-center gap-2 rounded-full bg-pink-50 border border-pink-200/80 px-4 py-1.5 text-xs font-bold text-brand-pink mb-5 shadow-xs">
+                <span class="h-2 w-2 rounded-full bg-brand-pink animate-ping"></span>
+                Automated Conversion QA for Marketing Agencies
+            </div>
 
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-950 leading-tight">
-            Know the minute your client's tracking breaks.
-        </h1>
+            <h1 id="hero-heading" class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-950 leading-[1.15]">
+                Stop bad code from hijacking successful ad campaigns.
+            </h1>
 
-        <p class="mt-4 text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
-            Record your checkout flow once with our browser extension. We run automated, human-like test visits
-            continuously to catch code errors before they damage your client ad campaigns.
-        </p>
-
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <button onclick="openModal()"
-                    class="rounded-full bg-slate-950 px-7 py-3.5 text-xs font-bold text-white hover:bg-slate-800 transition shadow-md">
-                Request Beta Access
-            </button>
-            <a href="#demo"
-               class="rounded-full border border-slate-200 bg-white px-6 py-3.5 text-xs font-bold text-slate-700 hover:bg-slate-50 transition">
-                Try the Simulator ↓
-            </a>
-        </div>
-    </section>
-
-    <!-- INTERACTIVE DEMO (Broken First -> Healthy/Fixed Second) -->
-    <section id="demo" class="py-8 border-t border-slate-100">
-        <div class="text-center max-w-xl mx-auto mb-6">
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-purple font-mono">Live Interactive X-Ray</span>
-            <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 mt-1">
-                Test what happens when tracking silently breaks
-            </h2>
-            <p class="mt-1.5 text-xs sm:text-sm text-slate-600 font-medium">
-                Click "Pay $95.00" below to see how a small theme update quietly drops your conversion signals.
+            <p class="mt-4 text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
+                When a developer changes a button class, sales go through normally—but Meta and Google receive zero conversion signals. PixelHelm runs continuous, human-like automated checkout simulations to catch broken tracking before ad spend burns.
             </p>
-        </div>
 
-        <!-- Simulator Container -->
-        <div class="rounded-3xl bg-slate-100 p-4 sm:p-6 border border-slate-200">
+            <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+                <button onclick="openModal()"
+                        class="rounded-full bg-slate-950 px-7 py-3.5 text-xs font-bold text-white hover:bg-slate-800 transition shadow-md"
+                        aria-label="Open Beta Request Form">
+                    Request Beta Access
+                </button>
+                <a href="#demo"
+                   class="rounded-full border border-slate-200 bg-white px-6 py-3.5 text-xs font-bold text-slate-700 hover:bg-slate-50 transition shadow-xs"
+                   aria-label="Navigate to Live Simulator">
+                    Watch Live Simulation ↓
+                </a>
+            </div>
+        </section>
 
-            <!-- Mode Switcher Tabs -->
-            <div class="bg-white rounded-2xl p-2 mb-4 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-2">
-                <span class="text-xs font-bold text-slate-500 ml-2">Select Condition:</span>
+        <!-- LIVE INTERACTIVE VISUAL DEMO (Viewport-Triggered, Pausable, Slower Pace) -->
+        <section id="demo" class="py-8 border-t border-slate-100" aria-labelledby="demo-heading">
 
-                <div class="flex gap-2 w-full sm:w-auto">
-                    <!-- 1. Broken Store (Default Active) -->
-                    <button id="mode-broken-btn" onclick="selectMode('broken')"
-                            class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-amber-500 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5">
-                        <span>⚠️</span>
-                        <span>1. Theme Updated (Broken Button)</span>
-                    </button>
-
-                    <!-- 2. Healthy / Fixed Store -->
-                    <button id="mode-healthy-btn" onclick="selectMode('healthy')"
-                            class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-bold transition flex items-center justify-center gap-1.5">
-                        <span>✓</span>
-                        <span>2. Healthy Store (Fixed)</span>
-                    </button>
+            <div class="max-w-2xl mx-auto text-center mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-100 text-brand-violet text-[11px] font-mono font-bold uppercase tracking-wider mb-2">
+                    Visual Diagnostic Simulation
                 </div>
+                <h2 id="demo-heading" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950">
+                    How PixelHelm Intercepts Broken Signals
+                </h2>
+                <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+                    Scroll down to watch our automated bot execute a checkout on the left, while PixelHelm detects the broken tracking signal on the right in real time.
+                </p>
             </div>
 
-            <!-- TWO TIERS: Storefront Top, Telemetry Bottom -->
-            <div class="space-y-3">
+            <!-- Cockpit Frame -->
+            <div class="rounded-3xl bg-slate-950 border border-slate-800 terminal-glow text-white overflow-hidden relative p-4 sm:p-7">
 
-                <!-- TOP TIER: Storefront Checkout -->
-                <div class="store-window rounded-2xl bg-white border border-slate-200 overflow-hidden">
-
-                    <!-- Browser URL Bar -->
-                    <div class="flex items-center justify-between bg-slate-50 px-4 py-2.5 border-b border-slate-100 text-[11px] text-slate-500 font-mono">
-                        <div class="flex gap-1.5">
-                            <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
-                        </div>
-                        <div class="text-slate-600 truncate mx-2">
-                            https://client-store.com/checkout?ad_click_id=98412_campaign
-                        </div>
-                        <div class="text-slate-400 font-sans font-bold text-[10px] uppercase">Storefront View</div>
+                <!-- Control Bar with Play/Pause & Replay -->
+                <div class="flex flex-col sm:flex-row items-center justify-between pb-5 border-b border-slate-800 gap-3">
+                    <div class="flex items-center gap-2.5">
+                        <span id="bot-status-beacon" class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span id="bot-status-text" class="text-xs font-mono font-bold text-slate-200">Bot Ready (Awaiting Scroll)</span>
                     </div>
 
-                    <!-- Store Body -->
-                    <div class="p-6 max-w-lg mx-auto">
+                    <!-- Action Controls -->
+                    <div class="flex items-center gap-2">
+                        <button id="play-pause-btn" onclick="togglePlayPause()"
+                                class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 transition shadow-sm flex items-center gap-1.5"
+                                aria-label="Play or Pause Simulation">
+                            <span id="play-pause-icon">⏸</span>
+                            <span id="play-pause-text">Pause</span>
+                        </button>
 
-                        <!-- Active Checkout Form -->
-                        <div id="store-form">
-                            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-                                <div class="flex items-center gap-3">
-                                    <div class="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center text-xl">
-                                        👟
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-slate-900">Wool Runner 2.0</div>
-                                        <div class="text-[11px] text-slate-500">Size: 10 • Natural Black</div>
-                                    </div>
+                        <button id="restart-sim-btn" onclick="replaySimulation()"
+                                class="px-3.5 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-xs font-bold text-white transition shadow-sm flex items-center gap-1.5"
+                                aria-label="Replay Simulation from Beginning">
+                            <span>↺</span>
+                            <span>Replay</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Split Stage: Storefront (Left) vs Telemetry & Alert (Right) -->
+                <div class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch relative">
+
+                    <!-- LEFT (5 Cols): Minimalist E-Commerce Store with Animated Cursor -->
+                    <div class="lg:col-span-5 bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden relative flex flex-col justify-between shadow-lg min-h-[360px]">
+
+                        <!-- Mac Top Bar -->
+                        <div class="bg-slate-950 px-3.5 py-2.5 border-b border-slate-800 flex items-center justify-between text-[11px] font-mono">
+                            <div class="flex items-center gap-1.5" aria-hidden="true">
+                                <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f56] inline-block"></span>
+                                <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e] inline-block"></span>
+                                <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f] inline-block"></span>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-mono">client-store.com/shop</span>
+                        </div>
+
+                        <!-- Store Body Container (Target Stage) -->
+                        <div id="store-stage" class="p-5 relative select-none flex-1 flex flex-col justify-center">
+
+                            <!-- Virtual Mouse Cursor with Click Feedback -->
+                            <div id="virtual-cursor" class="absolute z-30 top-0 left-0 drop-shadow-md">
+                                <svg id="cursor-pointer" class="w-6 h-6 text-purple-400 fill-purple-500 stroke-white stroke-2 transition-transform duration-150" viewBox="0 0 24 24">
+                                    <path d="M3 3l7 18 3-7 7-3L3 3z"/>
+                                </svg>
+                                <span class="absolute left-5 top-4 px-2 py-0.5 rounded bg-slate-950 border border-purple-500/50 text-[9px] font-mono text-purple-300 whitespace-nowrap shadow-sm">
+                                    PixelHelm Bot
+                                </span>
+                            </div>
+
+                            <!-- Screen 1: Product View -->
+                            <div id="store-product-view" class="space-y-4">
+                                <div class="h-28 rounded-xl bg-slate-800/80 border border-white/5 flex items-center justify-center text-4xl">
+                                    👟
                                 </div>
-                                <div class="text-xs font-bold font-mono text-slate-900">$95.00</div>
-                            </div>
-
-                            <div class="mt-4 p-2.5 rounded-xl bg-slate-50 text-xs text-slate-600">
-                                <span class="text-slate-400 block text-[10px] uppercase font-bold">Customer</span>
-                                sarah.jenkins@gmail.com • New York, NY
-                            </div>
-
-                            <div class="mt-4">
-                                <button id="store-pay-button" onclick="runPurchaseSimulation()"
-                                        class="w-full rounded-xl bg-slate-950 py-3 text-xs font-bold text-white hover:bg-slate-800 transition flex items-center justify-center gap-2 shadow-md">
-                                    <span id="btn-label">Pay $95.00 and Place Order</span>
-                                    <span id="btn-loader" class="hidden animate-spin">⟳</span>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-xs font-bold text-white">Wool Runner 2.0</div>
+                                        <div class="text-[10px] text-slate-400">Natural Black • Size 10</div>
+                                    </div>
+                                    <div class="text-xs font-mono font-bold text-purple-300">$95.00</div>
+                                </div>
+                                <button id="btn-add-to-cart" class="w-full py-2.5 rounded-xl bg-slate-800 text-slate-200 text-xs font-bold border border-white/10 transition">
+                                    Add to Cart
                                 </button>
                             </div>
 
-                            <!-- DOM Tag Indicator with Red Highlighting -->
-                            <div class="mt-3 text-center" id="dom-badge-container">
-                                <div id="dom-badge"
-                                     class="inline-flex flex-wrap items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-50 border border-rose-200 text-[11px] font-mono">
-                                    <span class="text-slate-500">Tag Trigger:</span>
-                                    <span class="font-bold text-rose-600 bg-rose-100 px-1.5 py-0.5 rounded border border-rose-300">#btn-order [NOT FOUND]</span>
-                                    <span class="text-slate-400">→ Current: <code class="text-slate-700 font-bold">.btn-checkout</code></span>
+                            <!-- Screen 2: Checkout / Payment (Hidden initially) -->
+                            <div id="store-checkout-view" class="hidden space-y-3">
+                                <div class="text-[11px] font-bold text-slate-400 uppercase font-mono pb-2 border-b border-slate-800">
+                                    Express Checkout
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-950 border border-white/5 flex justify-between items-center text-xs">
+                                    <span class="text-slate-300">1x Wool Runner 2.0</span>
+                                    <span class="font-mono text-purple-300 font-bold">$95.00</span>
+                                </div>
+                                <button id="btn-place-order" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-brand-purple text-white text-xs font-bold shadow-md transition">
+                                    Pay $95.00 (Place Order)
+                                </button>
+                                <div class="text-[10px] font-mono text-center text-amber-400/90 bg-amber-950/40 py-1 rounded border border-amber-500/20">
+                                    DOM Warning: Button class changed to <code class="text-white font-bold">.btn-pay</code>
                                 </div>
                             </div>
+
+                            <!-- Screen 3: Order Completed (Frontend Success) -->
+                            <div id="store-success-view" class="hidden text-center py-6 space-y-2">
+                                <div class="h-10 w-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center mx-auto text-sm border border-emerald-500/40">
+                                    ✓
+                                </div>
+                                <div class="text-xs font-bold text-white">Order Confirmed #89201</div>
+                                <p class="text-[10px] text-slate-400">Shopify checkout completed successfully.</p>
+                                <div class="p-2 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-[10px] text-emerald-300 font-medium">
+                                    Frontend Sale Processed: $95.00 USD
+                                </div>
+                            </div>
+
                         </div>
+                    </div>
 
-                        <!-- Order Receipt Confirmation -->
-                        <div id="store-receipt" class="hidden text-center py-4">
-                            <div class="h-10 w-10 rounded-full bg-emerald-100 text-emerald-600 font-bold flex items-center justify-center mx-auto text-base mb-2">
-                                ✓
-                            </div>
-                            <h3 class="text-base font-extrabold text-slate-900">Order Confirmed #89201</h3>
-                            <p class="text-xs text-slate-500 mt-1">Thank you, Sarah! We received your $95.00
-                                payment.</p>
+                    <!-- RIGHT (7 Cols): PixelHelm Sniffer Terminal & Instant Incident Resolution -->
+                    <div class="lg:col-span-7 space-y-4 flex flex-col justify-between">
 
-                            <div class="mt-3 p-2.5 bg-emerald-50 text-emerald-800 rounded-xl text-xs font-medium border border-emerald-100">
-                                Order processed with 0 errors. Frontend checkout succeeded.
-                            </div>
+                        <!-- Telemetry Stream Terminal -->
+                        <div class="rounded-2xl bg-slate-900 border border-slate-800 p-4 font-mono text-xs flex-1 flex flex-col justify-between min-h-[220px]">
+                            <div>
+                                <!-- Terminal Top -->
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-[11px]">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-slate-400 font-bold">TELEMETRY SNIFFER</span>
+                                    </div>
+                                    <span id="telemetry-status-pill" class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                                        INITIALIZING
+                                    </span>
+                                </div>
 
-                            <!-- Callout Banner when Broken -->
-                            <div id="broken-resolution-card"
-                                 class="mt-4 p-4 bg-rose-50 border border-rose-200 rounded-2xl text-left">
-                                <div class="flex items-start gap-2.5">
-                                    <span class="text-base">🚨</span>
-                                    <div>
-                                        <div class="text-xs font-bold text-rose-900">The signal is broken. We detected
-                                            it.
-                                        </div>
-                                        <div class="text-[11px] text-rose-700 mt-1 leading-relaxed">
-                                            Tag trigger selector <span
-                                                class="bg-rose-200/80 text-rose-900 font-mono font-bold px-1.5 py-0.5 rounded border border-rose-300">#btn-order [NOT FOUND]</span>
-                                            failed to fire. Your ad platforms received 0 conversion events.
-                                        </div>
+                                <!-- Live Step Logs (Revealed at readable intervals) -->
+                                <div class="mt-3.5 space-y-2 text-[11px] leading-relaxed">
+                                    <div id="log-step-1" class="text-slate-400">
+                                        [00:01] Synthetic bot navigating to client store...
+                                    </div>
+                                    <div id="log-step-2" class="text-slate-500 hidden">
+                                        [00:03] Event: <span class="text-emerald-400 font-bold">AddToCart</span> verified in dataLayer ($95.00)
+                                    </div>
+                                    <div id="log-step-3" class="text-slate-500 hidden">
+                                        [00:05] Navigated to checkout. Testing DOM tag listeners...
+                                    </div>
+                                    <div id="log-step-4" class="text-slate-500 hidden">
+                                        [00:07] <span class="text-amber-400 font-bold">DOM ERROR:</span> Expected trigger <code class="text-rose-300 bg-rose-950 px-1 rounded">#btn-order</code> detached by theme update.
+                                    </div>
+                                    <div id="log-step-5" class="text-slate-500 hidden">
+                                        [00:08] <span class="text-rose-400 font-bold">TELEMETRY DROPPED:</span> Meta Pixel received 0 bytes. Conversion lost.
                                     </div>
                                 </div>
-                                <button onclick="selectMode('healthy'); runPurchaseSimulation();"
-                                        class="mt-3.5 w-full rounded-xl bg-slate-950 py-2.5 text-xs font-bold text-white hover:bg-slate-800 transition shadow-sm">
-                                    Show how it looks fixed →
-                                </button>
                             </div>
 
-                            <!-- Reset Button when in Healthy mode -->
-                            <button id="reset-test-btn" onclick="resetStoreForm()"
-                                    class="hidden mt-4 text-xs font-bold text-brand-purple hover:underline">
-                                ↺ Test Again
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- BOTTOM TIER: Ad Platform Telemetry HUD -->
-                <div class="rounded-2xl bg-slate-950 text-white p-5 font-mono border border-slate-800 shadow-md">
-
-                    <div class="flex items-center justify-between border-b border-white/10 pb-3 text-xs">
-                        <div class="flex items-center gap-2">
-                            <span id="hud-pulse-dot" class="h-2.5 w-2.5 rounded-full bg-amber-400 animate-ping"></span>
-                            <span class="font-bold text-slate-200">BACKGROUND AD TELEMETRY</span>
-                        </div>
-                        <span id="hud-mode-pill"
-                              class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300">
-                TRIGGER DETACHED
-              </span>
-                    </div>
-
-                    <!-- Diagnostics Matrix -->
-                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-
-                        <div class="bg-slate-900 rounded-xl p-3 border border-white/5">
-                            <div class="text-slate-400 text-[10px]">AD PLATFORM PIXELS</div>
-                            <div id="hud-meta-val" class="font-bold text-rose-400 mt-1">Trigger Unhooked ⚠️</div>
-                            <div id="hud-meta-sub" class="text-[10px] mt-1 text-slate-400">
-                                Target: <span
-                                    class="bg-rose-950 border border-rose-800 text-rose-300 font-bold px-1 rounded">#btn-order [NOT FOUND]</span>
+                            <!-- Bottom Telemetry Metric Summary -->
+                            <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[10px]">
+                                <div class="p-2.5 rounded-xl bg-slate-950 border border-white/5">
+                                    <span class="text-slate-500 block">STORE CHECKOUT:</span>
+                                    <span id="metric-store" class="text-slate-400 font-bold">Standby</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-950 border border-white/5">
+                                    <span class="text-slate-500 block">META / GOOGLE CAPI:</span>
+                                    <span id="metric-pixel" class="text-slate-400 font-bold">Standby</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="bg-slate-900 rounded-xl p-3 border border-white/5">
-                            <div class="text-slate-400 text-[10px]">WEB ANALYTICS</div>
-                            <div id="hud-ga4-val" class="font-bold text-slate-200 mt-1">Ready: $95.00 USD</div>
-                            <div id="hud-ga4-sub" class="text-[10px] text-slate-500 mt-1">dataLayer connected</div>
+                        <!-- Incident Alert Card -->
+                        <div id="solution-alert-card" class="rounded-2xl p-4 bg-slate-900 border border-slate-800 transition-all duration-300">
+                            <div class="flex items-start gap-3">
+                                <div id="alert-icon" class="text-xl">🛡️</div>
+                                <div class="w-full">
+                                    <div id="alert-title" class="text-xs font-bold text-slate-300">Continuous QA Sniffer Active</div>
+                                    <div id="alert-desc" class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                                        PixelHelm simulates customer checkouts continuously to catch silent tracking failures before ad algorithms spend budget on low-intent traffic.
+                                    </div>
+                                    <div id="alert-pill" class="hidden mt-2 p-2.5 rounded-xl bg-slate-950 border border-purple-500/40 font-mono text-[10px] text-purple-200">
+                                        <span class="text-rose-400 font-bold">Instant Slack Alert:</span> "Theme update broke Meta Purchase tag on client store. Fix trigger selector to match <code class="text-emerald-300">.btn-pay</code>."
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="bg-slate-900 rounded-xl p-3 border border-white/5">
-                            <div class="text-slate-400 text-[10px]">SMART BIDDING ALGORITHM</div>
-                            <div id="hud-algo-val" class="font-bold text-emerald-400 mt-1">Active Optimization</div>
-                            <div id="hud-algo-sub" class="text-[10px] text-slate-500 mt-1">Target ROAS: 3.8x</div>
-                        </div>
-
-                    </div>
-
-                    <!-- Slack Alert Toast inside HUD -->
-                    <div id="hud-alert-row"
-                         class="hidden mt-4 pt-3 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
-                        <div class="text-rose-400 flex items-center gap-2">
-                            <span>🚨</span>
-                            <span class="font-bold">PixelHelm Alert:</span>
-                            <span class="text-slate-300 font-sans">Selector <code
-                                    class="text-rose-300 font-bold bg-rose-950 px-1 rounded">#btn-order</code> not found in DOM. Purchase event dropped.</span>
-                        </div>
-                        <span class="text-slate-400 text-[10px]">Slack sent to #agency-alerts</span>
                     </div>
 
                 </div>
 
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- WHAT PIXELHELM SELLS -->
+        <section class="py-12 border-t border-slate-100" aria-labelledby="product-heading">
+            <div class="max-w-xl mb-8">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-purple font-mono">What We Deliver</span>
+                <h2 id="product-heading" class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 mt-1">
+                    Automated 24/7 tracking assurance for agencies
+                </h2>
+            </div>
 
-    <!-- HOW IT WORKS (3 Simple Steps with Browser Extension Setup) -->
-    <section id="how" class="py-10 border-t border-slate-100">
-        <div class="max-w-xl mb-6">
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-purple font-mono">How It Works</span>
-            <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 mt-1">
-                Teach it once. We test your funnel continuously.
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
+                <div class="rounded-2xl bg-white p-6 border border-slate-200 shadow-sm">
+                    <div class="h-9 w-9 rounded-xl bg-purple-100 text-brand-purple font-bold text-sm flex items-center justify-center">01</div>
+                    <h3 class="mt-3 text-sm font-bold text-slate-900">Synthetic Checkout Bots</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        Headless browser runners execute realistic end-to-end checkouts continuously. Uses private $0 QA promo codes with zero card charges or inventory disruption.
+                    </p>
+                </div>
+
+                <div class="rounded-2xl bg-white p-6 border border-slate-200 shadow-sm">
+                    <div class="h-9 w-9 rounded-xl bg-purple-100 text-brand-purple font-bold text-sm flex items-center justify-center">02</div>
+                    <h3 class="mt-3 text-sm font-bold text-slate-900">Multi-Platform Sniffing</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        We intercept outgoing network telemetry for Meta Pixel, TikTok Events, Google Ads CAPI, and GA4 to assert that purchase values, currencies, and event IDs are delivered intact.
+                    </p>
+                </div>
+
+                <div class="rounded-2xl bg-white p-6 border border-slate-200 shadow-sm">
+                    <div class="h-9 w-9 rounded-xl bg-purple-100 text-brand-purple font-bold text-sm flex items-center justify-center">03</div>
+                    <h3 class="mt-3 text-sm font-bold text-slate-900">Root-Cause Slack Alerts</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        Get notified with the exact broken CSS selector or missing dataLayer variable within 60 seconds of a site deployment so developers can fix it immediately.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how" class="py-12 border-t border-slate-100" aria-labelledby="how-heading">
+            <div class="max-w-xl mb-8">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-purple font-mono">The Workflow</span>
+                <h2 id="how-heading" class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 mt-1">
+                    Set up once. Monitor every client store continuously.
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
+                <div class="rounded-2xl bg-white p-6 border border-slate-200 shadow-sm">
+                    <h3 class="text-sm font-bold text-slate-900">Record Funnel via Chrome Extension</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        Click through your client checkout once using our lightweight Chrome extension. It automatically records the form steps, button selectors, and expected tracking events in under 60 seconds.
+                    </p>
+                </div>
+
+                <div class="rounded-2xl bg-white p-6 border border-slate-200 shadow-sm">
+                    <h3 class="text-sm font-bold text-slate-900">Automated continuous</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        Our cloud runners repeat the exact journey continuously without inflating live paid ad counts or touching production payment gateways.
+                    </p>
+                </div>
+
+                <div class="rounded-2xl bg-white p-6 border border-slate-200 shadow-sm">
+                    <h3 class="text-sm font-bold text-slate-900">Protect Smart Bidding</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        Keep conversion signals streaming smoothly to Meta Advantage+ and Google Performance Max so algorithms never fly blind.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq" class="py-12 border-t border-slate-100" aria-labelledby="faq-heading">
+            <div class="max-w-xl mb-8">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-purple font-mono">FAQ</span>
+                <h2 id="faq-heading" class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 mt-1">
+                    Frequently asked questions
+                </h2>
+            </div>
+
+            <div class="space-y-4 text-xs">
+                <div class="rounded-2xl bg-slate-50 p-5 border border-slate-200/80">
+                    <h3 class="font-bold text-sm text-slate-900">What exactly does PixelHelm sell?</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        PixelHelm sells automated 24/7 conversion tracking assurance for marketing agencies. Instead of finding out days later that a client theme change broke your tracking, our automated bots test your client funnels continuously and alert you the second a pixel or GTM trigger fails.
+                    </p>
+                </div>
+
+                <div class="rounded-2xl bg-slate-50 p-5 border border-slate-200/80">
+                    <h3 class="font-bold text-sm text-slate-900">Why do I need PixelHelm if my client's site is online?</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        Uptime tools (like Pingdom or Datadog) only check if the web server returns HTTP 200. They are completely blind to marketing scripts. If a button class is renamed, orders still process normally, but Meta and Google receive 0 conversion pings. The bidding algorithm assumes campaigns stopped working and diverts client ad budget toward low-intent traffic.
+                    </p>
+                </div>
+
+                <div class="rounded-2xl bg-slate-50 p-5 border border-slate-200/80">
+                    <h3 class="font-bold text-sm text-slate-900">How is payment handled during automated tests?</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        No real credit cards are charged. Our synthetic runner uses your store's private 100% off QA discount code to complete a $0 order, or stops right at the payment step while verifying all prior DOM triggers. Orders are tagged so store owners can filter or auto-archive them without affecting sales numbers or inventory.
+                    </p>
+                </div>
+
+                <div class="rounded-2xl bg-slate-50 p-5 border border-slate-200/80">
+                    <h3 class="font-bold text-sm text-slate-900">Will synthetic tests pollute our client's live ad attribution?</h3>
+                    <p class="mt-2 text-slate-600 leading-relaxed font-medium">
+                        No. Our automated runner inspects the outgoing network requests directly from the browser without attaching live paid ad click IDs. We verify that the payload, price, and event structure are valid without artificially inflating your real campaign conversion counts.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom CTA Banner -->
+        <section class="mt-6 rounded-3xl bg-slate-950 p-8 sm:p-10 text-center text-white relative overflow-hidden" aria-labelledby="cta-heading">
+            <h2 id="cta-heading" class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                Protect your client ad accounts.
             </h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-
-            <div class="rounded-2xl bg-white p-5 border border-slate-200 shadow-sm">
-                <div class="font-bold text-brand-purple text-sm">01</div>
-                <h3 class="mt-2 text-sm font-bold text-slate-900">Record Once via Browser Extension</h3>
-                <p class="mt-1.5 text-slate-600 leading-relaxed font-medium">
-                    Click through your client checkout once using our lightweight Chrome extension. It automatically
-                    records the form steps, button selectors, and expected tracking events.
-                </p>
-            </div>
-
-            <div class="rounded-2xl bg-white p-5 border border-slate-200 shadow-sm">
-                <div class="font-bold text-brand-purple text-sm">02</div>
-                <h3 class="mt-2 text-sm font-bold text-slate-900">Automated Human-Like Visits</h3>
-                <p class="mt-1.5 text-slate-600 leading-relaxed font-medium">
-                    Our system repeats that exact journey continuously. It navigates like a real customer, uses private
-                    QA promo codes to avoid card charges, and never inflates your live ad counts.
-                </p>
-            </div>
-
-            <div class="rounded-2xl bg-white p-5 border border-slate-200 shadow-sm">
-                <div class="font-bold text-brand-purple text-sm">03</div>
-                <h3 class="mt-2 text-sm font-bold text-slate-900">Immediate Slack Alerts</h3>
-                <p class="mt-1.5 text-slate-600 leading-relaxed font-medium">
-                    If a site update breaks a trigger or drops a conversion ping, you get a direct notification with the
-                    exact broken code before ad delivery suffers.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- WHAT WE MONITOR (Checklist) -->
-    <section class="my-4 rounded-2xl bg-slate-900 p-6 sm:p-8 text-white">
-        <h3 class="text-lg font-bold">What we monitor automatically</h3>
-        <p class="mt-1 text-xs text-slate-400">Everything needed to keep client attribution clean.</p>
-
-        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div class="flex items-center gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-white/5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Browser pixels and server conversion APIs (CAPI and webhooks)</span>
-            </div>
-            <div class="flex items-center gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-white/5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Web analytics purchase values and currency tags</span>
-            </div>
-            <div class="flex items-center gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-white/5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Tag manager button click triggers and custom events</span>
-            </div>
-            <div class="flex items-center gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-white/5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Lead forms and appointment booking funnels</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section id="faq" class="py-10 border-t border-slate-100">
-        <div class="max-w-xl mb-6">
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-purple font-mono">FAQ</span>
-            <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 mt-1">
-                Frequently asked questions
-            </h2>
-        </div>
-
-        <div class="space-y-3.5 text-xs">
-
-            <!-- FAQ 1: Why do I need this? -->
-            <div class="rounded-2xl bg-slate-50 p-5 border border-slate-200/80">
-                <div class="font-bold text-sm text-slate-900">Why do I need this?</div>
-                <div class="mt-2 text-slate-600 leading-relaxed font-medium">
-                    Paid media platforms use automated machine learning feedback to find buying customers for your
-                    campaigns. When a site theme or plugin update breaks a button selector, the customer can still buy,
-                    but no conversion signal reaches the ad network. Because the platform thinks conversions stopped,
-                    the bidding algorithm begins wasting your client budget on cheap, low-intent traffic. PixelHelm
-                    catches this immediately so you can fix the issue before campaign performance degrades.
-                </div>
-            </div>
-
-            <!-- FAQ 2: How does the browser extension work? -->
-            <div class="rounded-2xl bg-slate-50 p-5 border border-slate-200/80">
-                <div class="font-bold text-sm text-slate-900">How do I set up a funnel with the browser extension?</div>
-                <div class="mt-2 text-slate-600 leading-relaxed font-medium">
-                    You install our Chrome extension, start recording, and complete a normal test checkout on your
-                    client site once. The extension records the URLs, input fields, and network pings sent during the
-                    process. After that, our automated cloud runners take over and repeat the check continuously without
-                    requiring further manual work.
-                </div>
-            </div>
-
-            <!-- FAQ 4: Will test checkouts mess up live ad data? -->
-            <div class="rounded-2xl bg-slate-50 p-5 border border-slate-200/80">
-                <div class="font-bold text-sm text-slate-900">Will synthetic tests pollute our client's live ad
-                    attribution?
-                </div>
-                <div class="mt-2 text-slate-600 leading-relaxed font-medium">
-                    No. Our automated runner inspects the outgoing network requests directly from the browser without
-                    attaching live paid ad click IDs. We verify that the payload, price, and event structure are valid
-                    without artificially inflating your real campaign conversion counts.
-                </div>
-            </div>
-
-            <!-- FAQ 5: How can I test this? -->
-            <div class="rounded-2xl bg-slate-50 p-5 border border-slate-200/80">
-                <div class="font-bold text-sm text-slate-900">How can I test this on our agency funnels?</div>
-                <div class="mt-2 text-slate-600 leading-relaxed font-medium">
-                    Submit your details through our beta request form below. We will set up your account, guide you
-                    through recording your first funnel with the extension, and will contact you as soon as possible!
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Bottom CTA Banner -->
-    <section class="mt-6 rounded-3xl bg-slate-950 p-8 sm:p-10 text-center text-white relative overflow-hidden">
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Protect your client ad accounts.
-        </h2>
-        <p class="mt-2 text-xs sm:text-sm text-slate-400 max-w-md mx-auto font-medium">
-            Join our private beta to monitor up to 5 client funnels for free while we build.
-        </p>
-        <button onclick="openModal()"
-                class="mt-6 rounded-full bg-white px-7 py-3.5 text-xs font-bold text-slate-950 hover:bg-slate-100 transition shadow-md">
-            Join Private Beta
-        </button>
-    </section>
+            <p class="mt-2 text-xs sm:text-sm text-slate-400 max-w-md mx-auto font-medium">
+                Join our private beta to monitor up to 5 client funnels for free while we build.
+            </p>
+            <button onclick="openModal()"
+                    class="mt-6 rounded-full bg-white px-7 py-3.5 text-xs font-bold text-slate-950 hover:bg-slate-100 transition shadow-md"
+                    aria-label="Join Private Beta">
+                Join Private Beta
+            </button>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="mt-10 pt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 font-medium">
-        <div>PixelHelm</div>
-        <div>2026 Beta</div>
+        <div>© 2026 PixelHelm. All rights reserved.</div>
+        <div>Private Beta Release</div>
     </footer>
 
 </div>
 
 <!-- Beta Request Modal -->
 <div id="betaModal"
-     class="fixed inset-0 z-50 flex hidden items-center justify-center p-4 bg-slate-950/40 backdrop-blur-sm">
+     class="fixed inset-0 z-50 flex hidden items-center justify-center p-4 bg-slate-950/50 backdrop-blur-sm"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="modal-title">
     <div class="relative w-full max-w-sm rounded-3xl bg-white p-6 shadow-2xl border border-slate-100">
 
-        <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700" aria-label="Close Modal">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
             </svg>
         </button>
 
         <div id="modalForm">
-            <h3 class="text-lg font-bold text-slate-900">Request beta access</h3>
+            <h3 id="modal-title" class="text-lg font-bold text-slate-900">Request beta access</h3>
             <p class="mt-1 text-xs text-slate-500 font-medium">
                 We will contact you as soon as possible!
             </p>
 
             <form onsubmit="handleForm(event)" class="mt-4 space-y-3">
                 <div>
-                    <label class="block text-[11px] font-bold text-slate-600 mb-1">Work Email</label>
-                    <input type="email" required id="email" placeholder="name@agency.com"
+                    <label for="email" class="block text-[11px] font-bold text-slate-600 mb-1">Work Email</label>
+                    <input type="email" required id="email" name="email" autocomplete="email" placeholder="name@agency.com"
                            class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-900 focus:bg-white focus:border-brand-purple focus:outline-none"/>
                 </div>
 
                 <div>
-                    <label class="block text-[11px] font-bold text-slate-600 mb-1">Agency or Store Name</label>
-                    <input type="text" required id="company" placeholder="Acme Media"
+                    <label for="company" class="block text-[11px] font-bold text-slate-600 mb-1">Agency or Store Name</label>
+                    <input type="text" required id="company" name="organization" autocomplete="organization" placeholder="Acme Media"
                            class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-900 focus:bg-white focus:border-brand-purple focus:outline-none"/>
                 </div>
 
                 <div>
-                    <label class="block text-[11px] font-bold text-slate-600 mb-1">Monthly Ad Spend</label>
-                    <select id="spend"
+                    <label for="spend" class="block text-[11px] font-bold text-slate-600 mb-1">Monthly Ad Spend</label>
+                    <select id="spend" name="ad-spend"
                             class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-900 focus:bg-white focus:border-brand-purple focus:outline-none font-medium">
                         <option value="<10k">Less than $10k / month</option>
                         <option value="10k-50k">$10k to $50k / month</option>
@@ -485,28 +548,28 @@
                         <option value="200k+">$200k+ / month</option>
                     </select>
                 </div>
-                <!-- Paste your Sitekey in data-sitekey -->
+
+                <!-- Cloudflare Turnstile Widget -->
                 <div class="cf-turnstile my-2 flex justify-center" data-sitekey="0x4AAAAAAEafhOF5xg12c8-f"></div>
+
                 <button id="modal-submit-btn" type="submit"
                         class="w-full mt-2 rounded-xl bg-slate-950 py-3 text-xs font-bold text-white hover:bg-slate-800 transition shadow-sm disabled:opacity-60">
                     Submit Request
                 </button>
 
-                <!-- Privacy & GDPR Notice -->
+                <!-- Privacy Notice -->
                 <p class="text-[10px] text-slate-400 text-center mt-2.5 leading-normal">
-                    By submitting, you agree to receive communications regarding the PixelHelm private beta. We do not
-                    share your data. You can request deletion anytime at privacy@pixelhelm.com.
+                    By submitting, you agree to receive communications regarding the PixelHelm private beta. We do not share or sell your information.
                 </p>
             </form>
         </div>
 
         <div id="modalSuccess" class="hidden text-center py-6">
-            <div class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 font-bold mb-3">
+            <div class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 font-bold mb-3" aria-hidden="true">
                 ✓
             </div>
             <h4 class="text-base font-bold text-slate-900">Request received</h4>
-            <p class="mt-1 text-xs text-slate-500 font-medium">We will reach out by email to set up your test
-                funnel.</p>
+            <p class="mt-1 text-xs text-slate-500 font-medium">We will reach out by email to set up your test funnel.</p>
             <button onclick="closeModal()"
                     class="mt-4 rounded-full bg-slate-100 px-5 py-2 text-xs font-bold text-slate-700 hover:bg-slate-200">
                 Close
@@ -516,146 +579,224 @@
     </div>
 </div>
 
-<!-- Interactive Simulation Engine -->
+<!-- Automated Simulation Engine with Scroll-Trigger, Smooth Easing & Pause/Play -->
 <script>
-    let currentMode = 'broken'; // Default is 'broken' first
+    let simTimer = null;
+    let isPaused = false;
+    let currentStep = 0;
+    let hasAutoStarted = false;
 
-    function selectMode(mode) {
-        currentMode = mode;
-        resetStoreForm();
+    // Direct cursor to element center smoothly
+    function moveCursorTo(targetElem) {
+        const stage = document.getElementById('store-stage');
+        const cursor = document.getElementById('virtual-cursor');
+        if (!stage || !targetElem || !cursor) return;
 
-        const brokenBtn = document.getElementById('mode-broken-btn');
-        const healthyBtn = document.getElementById('mode-healthy-btn');
-        const domBadge = document.getElementById('dom-badge');
-        const hudPulse = document.getElementById('hud-pulse-dot');
-        const hudModePill = document.getElementById('hud-mode-pill');
-        const hudMeta = document.getElementById('hud-meta-val');
-        const hudMetaSub = document.getElementById('hud-meta-sub');
-        const hudGa4 = document.getElementById('hud-ga4-val');
-        const hudAlgo = document.getElementById('hud-algo-val');
-        const hudAlert = document.getElementById('hud-alert-row');
+        const stageRect = stage.getBoundingClientRect();
+        const targetRect = targetElem.getBoundingClientRect();
 
-        if (mode === 'broken') {
-            brokenBtn.className = "flex-1 sm:flex-none px-4 py-2 rounded-xl bg-amber-500 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5";
-            healthyBtn.className = "flex-1 sm:flex-none px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-bold transition flex items-center justify-center gap-1.5";
+        const targetX = (targetRect.left - stageRect.left) + (targetRect.width / 2) - 10;
+        const targetY = (targetRect.top - stageRect.top) + (targetRect.height / 2) - 8;
 
-            domBadge.className = "inline-flex flex-wrap items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-50 border border-rose-200 text-[11px] font-mono";
-            domBadge.innerHTML = '<span class="text-slate-500">Tag Trigger:</span> <span class="font-bold text-rose-600 bg-rose-100 px-1.5 py-0.5 rounded border border-rose-300">#btn-order [NOT FOUND]</span> <span class="text-slate-400">→ Current: <code class="text-slate-700 font-bold">.btn-checkout</code></span>';
+        cursor.style.transform = `translate(${targetX}px, ${targetY}px)`;
+    }
 
-            hudPulse.className = "h-2.5 w-2.5 rounded-full bg-amber-400 animate-ping";
-            hudModePill.className = "px-2.5 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300";
-            hudModePill.innerText = "TRIGGER DETACHED";
+    // Trigger visual click pulse
+    function triggerClickAnimation() {
+        const pointer = document.getElementById('cursor-pointer');
+        if (!pointer) return;
+        pointer.style.transform = "scale(0.82)";
+        setTimeout(() => {
+            pointer.style.transform = "scale(1)";
+        }, 180);
+    }
 
-            hudMeta.innerText = "Trigger Unhooked ⚠️";
-            hudMeta.className = "font-bold text-rose-400 mt-1";
-            hudMetaSub.innerHTML = 'Target: <span class="bg-rose-950 border border-rose-800 text-rose-300 font-bold px-1 rounded">#btn-order [NOT FOUND]</span>';
+    // Step Execution Machine (Slower, 2.0s - 2.5s intervals for comfortable reading)
+    function executeStep(stepIndex) {
+        if (isPaused) {
+            currentStep = stepIndex;
+            return;
+        }
 
-            hudGa4.innerText = "Ready: $95.00 USD";
-            hudGa4.className = "font-bold text-slate-200 mt-1";
+        currentStep = stepIndex;
 
-            hudAlgo.innerText = "Active Optimization";
-            hudAlgo.className = "font-bold text-emerald-400 mt-1";
+        const prodView = document.getElementById('store-product-view');
+        const checkoutView = document.getElementById('store-checkout-view');
+        const successView = document.getElementById('store-success-view');
 
-            hudAlert.classList.add('hidden');
-        } else {
-            healthyBtn.className = "flex-1 sm:flex-none px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5";
-            brokenBtn.className = "flex-1 sm:flex-none px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-bold transition flex items-center justify-center gap-1.5";
+        const log1 = document.getElementById('log-step-1');
+        const log2 = document.getElementById('log-step-2');
+        const log3 = document.getElementById('log-step-3');
+        const log4 = document.getElementById('log-step-4');
+        const log5 = document.getElementById('log-step-5');
 
-            domBadge.className = "inline-flex flex-wrap items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-[11px] font-mono";
-            domBadge.innerHTML = '<span class="text-slate-500">Tag Trigger:</span> <span class="font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded border border-emerald-300">#btn-order [CONNECTED]</span>';
+        const statusPill = document.getElementById('telemetry-status-pill');
+        const metricStore = document.getElementById('metric-store');
+        const metricPixel = document.getElementById('metric-pixel');
 
-            hudPulse.className = "h-2.5 w-2.5 rounded-full bg-emerald-400";
-            hudModePill.className = "px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300";
-            hudModePill.innerText = "HEALTHY";
+        const alertCard = document.getElementById('solution-alert-card');
+        const alertIcon = document.getElementById('alert-icon');
+        const alertTitle = document.getElementById('alert-title');
+        const alertDesc = document.getElementById('alert-desc');
+        const alertPill = document.getElementById('alert-pill');
 
-            hudMeta.innerText = "Waiting for checkout";
-            hudMeta.className = "font-bold text-slate-200 mt-1";
-            hudMetaSub.innerHTML = 'Listening to <span class="text-emerald-400 font-bold">#btn-order</span>';
+        const btnAdd = document.getElementById('btn-add-to-cart');
+        const btnPay = document.getElementById('btn-place-order');
 
-            hudGa4.innerText = "Ready: $95.00 USD";
-            hudGa4.className = "font-bold text-slate-200 mt-1";
+        switch(stepIndex) {
+            case 0:
+                // State 0: Reset & Initial positioning
+                prodView.classList.remove('hidden');
+                checkoutView.classList.add('hidden');
+                successView.classList.add('hidden');
 
-            hudAlgo.innerText = "Active Optimization";
-            hudAlgo.className = "font-bold text-emerald-400 mt-1";
+                log2.classList.add('hidden');
+                log3.classList.add('hidden');
+                log4.classList.add('hidden');
+                log5.classList.add('hidden');
 
-            hudAlert.classList.add('hidden');
+                statusPill.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30";
+                statusPill.innerText = "CHECKOUT IN PROGRESS";
+
+                metricStore.className = "text-slate-400 font-bold";
+                metricStore.innerText = "Simulating Cart...";
+                metricPixel.className = "text-slate-400 font-bold";
+                metricPixel.innerText = "Sniffing...";
+
+                alertCard.className = "rounded-2xl p-4 bg-slate-900 border border-slate-800 transition-all duration-300";
+                alertIcon.innerText = "🤖";
+                alertTitle.innerText = "Step 1: Synthetic Bot Navigates Funnel";
+                alertDesc.innerText = "Headless browser loads the client store and targets the Add to Cart trigger.";
+                alertPill.classList.add('hidden');
+
+                // Position cursor at top left of store
+                document.getElementById('virtual-cursor').style.transform = "translate(30px, 30px)";
+
+                simTimer = setTimeout(() => executeStep(1), 1000);
+                break;
+
+            case 1:
+                // Move cursor to "Add to Cart"
+                moveCursorTo(btnAdd);
+                simTimer = setTimeout(() => executeStep(2), 1600);
+                break;
+
+            case 2:
+                // Click "Add to Cart" & Open Checkout
+                triggerClickAnimation();
+                log2.classList.remove('hidden');
+                log2.className = "text-emerald-400 font-bold";
+
+                prodView.classList.add('hidden');
+                checkoutView.classList.remove('hidden');
+
+                alertTitle.innerText = "Step 2: Inspecting Checkout DOM";
+                alertDesc.innerText = "Bot proceeds to the final order step and checks event listeners on the payment button.";
+
+                simTimer = setTimeout(() => executeStep(3), 2200);
+                break;
+
+            case 3:
+                // Move cursor to "Pay $95.00"
+                log3.classList.remove('hidden');
+                log3.className = "text-slate-300";
+                moveCursorTo(btnPay);
+                simTimer = setTimeout(() => executeStep(4), 1600);
+                break;
+
+            case 4:
+                // Click "Pay $95.00" -> Order succeeds on store, pixel fails on telemetry!
+                triggerClickAnimation();
+                checkoutView.classList.add('hidden');
+                successView.classList.remove('hidden');
+
+                // Move cursor aside to clear view
+                document.getElementById('virtual-cursor').style.transform = "translate(220px, 15px)";
+
+                metricStore.className = "text-emerald-400 font-bold";
+                metricStore.innerText = "✓ HTTP 200 ($95.00)";
+
+                log4.classList.remove('hidden');
+                log5.classList.remove('hidden');
+                log4.className = "text-amber-400";
+                log5.className = "text-rose-400 font-bold";
+
+                metricPixel.className = "text-rose-400 font-bold";
+                metricPixel.innerText = "✗ 0 Pings (Dropped)";
+
+                statusPill.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30";
+                statusPill.innerText = "SIGNAL LOSS DETECTED";
+
+                // Step 5: PixelHelm Root-Cause Alert Highlight
+                alertCard.className = "rounded-2xl p-4 bg-slate-900 border border-purple-500/40 shadow-lg shadow-purple-950/50 transition-all duration-300";
+                alertIcon.innerText = "🚨";
+                alertTitle.innerText = "Attribution Failure Caught & Alerted in 0.4s";
+                alertTitle.className = "text-xs font-bold text-rose-400";
+                alertDesc.innerText = "Shopify received the order, but Meta received 0 conversion events. PixelHelm detected the broken GTM trigger and notified the agency with the exact code patch.";
+                alertPill.classList.remove('hidden');
+
+                document.getElementById('bot-status-beacon').className = "h-2.5 w-2.5 rounded-full bg-rose-500";
+                document.getElementById('bot-status-text').innerText = "Incident Detected & Dispatched";
+
+                // Loop after 7 seconds if not paused
+                simTimer = setTimeout(() => {
+                    executeStep(0);
+                }, 7000);
+                break;
         }
     }
 
-    function runPurchaseSimulation() {
-        const btnLabel = document.getElementById('btn-label');
-        const btnLoader = document.getElementById('btn-loader');
+    // Play / Pause Controls
+    function togglePlayPause() {
+        const btnIcon = document.getElementById('play-pause-icon');
+        const btnText = document.getElementById('play-pause-text');
 
-        btnLabel.innerText = "Processing...";
-        btnLoader.classList.remove('hidden');
-
-        setTimeout(() => {
-            btnLabel.innerText = "Pay $95.00 and Place Order";
-            btnLoader.classList.add('hidden');
-
-            // Show receipt in storefront
-            document.getElementById('store-form').classList.add('hidden');
-            document.getElementById('store-receipt').classList.remove('hidden');
-
-            const hudPulse = document.getElementById('hud-pulse-dot');
-            const hudModePill = document.getElementById('hud-mode-pill');
-            const hudMeta = document.getElementById('hud-meta-val');
-            const hudMetaSub = document.getElementById('hud-meta-sub');
-            const hudGa4 = document.getElementById('hud-ga4-val');
-            const hudAlgo = document.getElementById('hud-algo-val');
-            const hudAlgoSub = document.getElementById('hud-algo-sub');
-            const hudAlert = document.getElementById('hud-alert-row');
-            const resolutionCard = document.getElementById('broken-resolution-card');
-            const resetTestBtn = document.getElementById('reset-test-btn');
-
-            if (currentMode === 'broken') {
-                // Broken Outcome: Telemetry dropped
-                hudPulse.className = "h-2.5 w-2.5 rounded-full bg-rose-500";
-                hudModePill.className = "px-2.5 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300";
-                hudModePill.innerText = "DROPPED SIGNAL";
-
-                hudMeta.innerText = "✗ DROPPED (0 pings)";
-                hudMeta.className = "font-bold text-rose-400 mt-1";
-                hudMetaSub.innerHTML = '<span class="text-rose-400 font-bold">Ad network endpoints</span> received 0 requests';
-
-                hudGa4.innerText = "✗ Missing value";
-                hudGa4.className = "font-bold text-rose-400 mt-1";
-
-                hudAlgo.innerText = "Learning Limited 🚨";
-                hudAlgo.className = "font-bold text-rose-400 mt-1";
-                hudAlgoSub.innerText = "Ad spend flying blind";
-
-                hudAlert.classList.remove('hidden');
-                resolutionCard.classList.remove('hidden');
-                resetTestBtn.classList.add('hidden');
-            } else {
-                // Healthy Outcome: Full conversion telemetry received
-                hudPulse.className = "h-2.5 w-2.5 rounded-full bg-emerald-400";
-                hudModePill.className = "px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300";
-                hudModePill.innerText = "SIGNAL DELIVERED (200 OK)";
-
-                hudMeta.innerText = "✓ Conversion Ping ($95.00)";
-                hudMeta.className = "font-bold text-emerald-400 mt-1";
-                hudMetaSub.innerHTML = '<span class="text-emerald-400 font-bold">Network pings sent</span> [200 OK]';
-
-                hudGa4.innerText = "✓ Purchase logged ($95.00)";
-                hudGa4.className = "font-bold text-emerald-400 mt-1";
-
-                hudAlgo.innerText = "✓ 1 Sale Attributed";
-                hudAlgo.className = "font-bold text-emerald-400 mt-1";
-                hudAlgoSub.innerText = "Bidding model reinforced";
-
-                hudAlert.classList.add('hidden');
-                resolutionCard.classList.add('hidden');
-                resetTestBtn.classList.remove('hidden');
-            }
-        }, 600);
+        if (isPaused) {
+            isPaused = false;
+            btnIcon.innerText = "⏸";
+            btnText.innerText = "Pause";
+            executeStep(currentStep);
+        } else {
+            isPaused = true;
+            clearTimeout(simTimer);
+            btnIcon.innerText = "▶";
+            btnText.innerText = "Resume";
+            document.getElementById('bot-status-text').innerText = "Simulation Paused";
+        }
     }
 
-    function resetStoreForm() {
-        document.getElementById('store-form').classList.remove('hidden');
-        document.getElementById('store-receipt').classList.add('hidden');
+    // Manual Replay
+    function replaySimulation() {
+        clearTimeout(simTimer);
+        isPaused = false;
+        document.getElementById('play-pause-icon').innerText = "⏸";
+        document.getElementById('play-pause-text').innerText = "Pause";
+        document.getElementById('bot-status-beacon').className = "h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse";
+        document.getElementById('bot-status-text').innerText = "Running Synthetic Simulation...";
+        executeStep(0);
     }
+
+    // Intersection Observer: Start ONLY when scrolled into screen
+    document.addEventListener('DOMContentLoaded', () => {
+        const demoSection = document.getElementById('demo');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAutoStarted) {
+                    hasAutoStarted = true;
+                    document.getElementById('bot-status-text').innerText = "Running Synthetic Simulation...";
+                    executeStep(0);
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.3 // Starts when 30% of the demo section is in view
+        });
+
+        if (demoSection) {
+            observer.observe(demoSection);
+        }
+    });
 
     // Modal Helpers
     function openModal() {
@@ -666,7 +807,7 @@
         document.getElementById('betaModal').classList.add('hidden');
     }
 
-    // Direct Google Apps Script Submissions
+    // Form Submission with Turnstile and Sheet Endpoint
     async function handleForm(e) {
         e.preventDefault();
 
@@ -697,7 +838,6 @@
                 body: JSON.stringify(payload)
             });
 
-            // Save backup locally
             const leads = JSON.parse(localStorage.getItem('pixelhelm_leads') || '[]');
             leads.push(payload);
             localStorage.setItem('pixelhelm_leads', JSON.stringify(leads));

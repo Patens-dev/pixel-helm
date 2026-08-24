@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
           rel="stylesheet"/>
-
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -485,7 +485,8 @@
                         <option value="200k+">$200k+ / month</option>
                     </select>
                 </div>
-
+                <!-- Paste your Sitekey in data-sitekey -->
+                <div class="cf-turnstile my-2 flex justify-center" data-sitekey="0x4AAAAAAEafhOF5xg12c8-f"></div>
                 <button id="modal-submit-btn" type="submit"
                         class="w-full mt-2 rounded-xl bg-slate-950 py-3 text-xs font-bold text-white hover:bg-slate-800 transition shadow-sm disabled:opacity-60">
                     Submit Request
@@ -674,10 +675,13 @@
         submitBtn.innerText = "Submitting...";
         submitBtn.disabled = true;
 
+        const turnstileToken = document.querySelector('[name="cf-turnstile-response"]')?.value || "";
+
         const payload = {
             email: document.getElementById('email').value,
             company: document.getElementById('company').value,
             spend: document.getElementById('spend').value,
+            turnstileToken: turnstileToken,
             timestamp: new Date().toISOString()
         };
 
